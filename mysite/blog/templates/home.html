@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    {% if tag %}
+        <p>Posts tagged with <strong>"{{ tag.name }}"</strong></p>
+    {% endif %}
+
+    {% for post in posts %}
+        {{ post.pk }}:
+        <a href="{{ post.get_absolute_url }}">{{ post }}</a>
+        {% if perms.blog.change_post %}
+            [ <a href="{% url 'blog:edit' pk=post.pk %}">
+                Edit
+            </a> ]
+        {% endif %}
+        {% if perms.blog.delete_post %}
+            [ <a href="{% url 'blog:delete' pk=post.pk %}">
+                Delete
+            </a> ]
+        {% endif %}
+        <br>
+    {% endfor %}
+    {% include '_pagination.html' with items=posts %}
+{% endblock %}

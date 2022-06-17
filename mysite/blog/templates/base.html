@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <title>Site</title>
+</head>
+<body>
+<ul class="menu">
+    <li>
+        <a class="{% if section == 'home' %}active{% elif section == 'blog_detail' %}detail{% endif %}"
+           href="{% url 'home' %}">Home</a>
+    </li>
+    {% if perms.blog.add_post %}
+    <li>
+        <a class="{% if section == 'blog_create' %}active{% endif %}"
+           href="{% url 'blog:create' %}">Add new post</a>
+    </li>
+    {% endif %}
+
+    <li>
+        {% if not user.is_authenticated %}
+        <!-- Ссылки для редактирования и удаления (Edit & Delete) -->
+        <a href="{% url 'account_login' %}">Sign in</a>
+        {% else %}
+        <a href="{% url 'account_logout' %}">Sign out</a>
+        {% endif %}
+    </li>
+</ul>
+{% block title %}{% endblock %}
+
+<p>{% block content %}Some default content{% endblock %}</p>
+{% include 'blog/_post_list.html' with heading='Latest posts' %}
+</body>
+</html>

@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    padding-top: 50 px;
+    background-color: #F8F8F8;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+a {
+    color: #000;
+}
+
+p {
+    line-height: 1.5em;
+}
+
+h1, h2 {
+    color: #333;
+    marging-top: 0;
+}
+
+.tags-title {
+    margin: 1.5em;
+    font-size: 1.3em;
+}
+
+.button,
+button[type="submit"],
+input[type="submit"] {
+    background-color: #558FE7;
+    border-color: #558FE7;
+    border-radius: 1px;
+    padding: 0.8em 1.5em;
+    color: #FFFFFF;
+    display: inline-block;
+    margin: 0.5em 0.5em 0.5em 0;
+    text-decoration: none;
+    width: auto;
+}
+
+.warning {
+    background-color: #E75555;
+}
