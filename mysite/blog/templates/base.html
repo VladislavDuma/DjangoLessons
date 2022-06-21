@@ -7,30 +7,47 @@
     <title>Site</title>
 </head>
 <body>
-<ul class="menu">
-    <li>
-        <a class="{% if section == 'home' %}active{% elif section == 'blog_detail' %}detail{% endif %}"
-           href="{% url 'home' %}">Home</a>
-    </li>
-    {% if perms.blog.add_post %}
-    <li>
-        <a class="{% if section == 'blog_create' %}active{% endif %}"
-           href="{% url 'blog:create' %}">Add new post</a>
-    </li>
-    {% endif %}
+<div class="header">
+    <div class="header-top">
+        <div class="header-brand">Brand</div>
+        <ul class="header-menu">
+            <li class="header-menu-li">
+                <a class="header-menu-a{% if section == 'home' %} header-menu-a-active {% endif %}"
+                   href="{% url 'home' %}">Home</a>
+            </li>
+            {% if perms.blog.add_post %}
+            <li class="header-menu-li">
+                <a class="header-menu-a{% if section == 'blog_create' %} header-menu-a-active {% endif %}"
+                   href="{% url 'blog:create' %}">Add new post</a>
+            </li>
+            {% endif %}
+        </ul>
+        <div class="header-account">
+            {% if not user.is_authenticated %}
+                <a class="header-account-a" href="{% url 'account_login' %}">Login</a>
+            {% else %}
+                <a class="header-account-a" href="{% url 'account_logout' %}">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="header-bottom">
+        <div class="header-bottom-content">
+            Site
+        </div>
+    </div>
+</div>
 
-    <li>
-        {% if not user.is_authenticated %}
-        <!-- Ссылки для редактирования и удаления (Edit & Delete) -->
-        <a href="{% url 'account_login' %}">Sign in</a>
-        {% else %}
-        <a href="{% url 'account_logout' %}">Sign out</a>
-        {% endif %}
-    </li>
-</ul>
-{% block title %}{% endblock %}
-
-<p>{% block content %}Some default content{% endblock %}</p>
-{% include 'blog/_post_list.html' with heading='Latest posts' %}
+<div class="menu">
+    <div class="content">
+        {% block title %}{% endblock %}
+        <p>{% block content %}Some default content{% endblock %}</p>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar-ad">
+            Advertisement
+        </div>
+        {% include 'blog/_post_list.html' with heading='Latest posts' %}
+    </div>
+</div>
 </body>
 </html>
