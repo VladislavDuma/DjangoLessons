@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.0/css/all.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>Site</title>
 </head>
@@ -43,9 +44,7 @@
         <p>{% block content %}Some default content{% endblock %}</p>
     </div>
     <div class="sidebar">
-        <div class="sidebar-ad">
-            Advertisement
-        </div>
+        <div class="sidebar-add">Advertisement</div>
         {% include 'blog/_post_list.html' with heading='Latest posts' %}
     </div>
 </div>

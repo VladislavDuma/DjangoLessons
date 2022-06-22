@@ -18,7 +18,7 @@ def home(request, tag=None):
         tag_obj = get_object_or_404(Tag, slug=tag)
         posts = Post.objects.filter(tags__in=[tag_obj])
 
-    paginator = Paginator(posts, 10)
+    paginator = Paginator(posts, 2)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
