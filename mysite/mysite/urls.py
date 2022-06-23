@@ -21,8 +21,33 @@ from django.urls import path, include
 import blog.views
 
 urlpatterns = [
-    path('', blog.views.home, name='home'),
-    path('blog/', include('blog.urls')),
-    path('accounts/', include('allauth.urls')),
-    path('admin/', admin.site.urls),
+                  path('',
+                       blog.views.home,
+                       name='home'),
+                  path('blog/',
+                       include('blog.urls')),
+                  path('accounts/',
+                       include('allauth.urls')),
+                  path('admin/',
+                       admin.site.urls),
+                  path('api/',
+                       blog.views.post_api_view,
+                       name='blog_api_view'),
+                  path('api/<int:pk>',
+                       blog.views.post_api_detail_view,
+                       name='blog_api_detail_view'),
+                  path('api/auth/',
+                       include('rest_auth.urls')),
+                  path('api/auth/registration/',
+                       include('rest_auth.registration.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Problem with rest_auth. Don't support django 4.0+
+# *For django.conf.urls use
+# from django.urls import re_path as url
+
+# *For ugettext use
+# from django.utils.translation import gettext_lazy as _
+
+# *for force_text use
+# from django.utils.encoding import force_str as force_text
