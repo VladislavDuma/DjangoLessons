@@ -1,0 +1,54 @@
+[
+  {
+    "model": "blog.post",
+    "pk": 1,
+    "fields": {
+      "title": "Realme 8i",
+      "body": "Mediatek G95",
+      "slug": "realme-8i",
+      "date": "2022-05-25T12:33:27.948",
+      "updated": "2022-06-02T17:26:30.409",
+      "author": null,
+      "image": "images/realme8i.webp"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 2,
+    "fields": {
+      "title": "Poco M4 Pro 5G",
+      "body": "Dimensity 810",
+      "slug": "poco-m4-pro-5g",
+      "date": "2022-05-25T12:33:27.948",
+      "updated": "2022-06-17T16:25:28.605",
+      "author": null,
+      "image": "images/poco-m4-pro-5g.webp"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 4,
+    "fields": {
+      "title": "Vivo Y31",
+      "body": "Snapdragon 662",
+      "slug": "vivo-y31",
+      "date": "2022-05-27T12:24:21.165",
+      "updated": "2022-06-02T17:29:38.874",
+      "author": null,
+      "image": "images/vivo-y31.webp"
+    }
+  },
+  {
+    "model": "blog.post",
+    "pk": 5,
+    "fields": {
+      "title": "test API is UPDATED 2",
+      "body": "",
+      "slug": "test-api-is-updated-2",
+      "date": "2022-06-23T12:01:09.436",
+      "updated": "2022-06-23T12:52:38.350",
+      "author": null,
+      "image": ""
+    }
+  }
+]

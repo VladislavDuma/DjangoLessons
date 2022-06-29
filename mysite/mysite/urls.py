@@ -32,15 +32,17 @@ urlpatterns = [
                        admin.site.urls),
                   path('api/',
                        blog.views.post_api_view,
-                       name='blog_api_view'),
+                       name='post_api_view'),
                   path('api/<int:pk>',
                        blog.views.post_api_detail_view,
-                       name='blog_api_detail_view'),
+                       name='post_api_detail_view'),
                   path('api/auth/',
                        include('rest_auth.urls')),
                   path('api/auth/registration/',
-                       include('rest_auth.registration.urls'))
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                       include('rest_auth.registration.urls')),
+                  path('debug/',
+                       include('debug_toolbar.urls')),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # Problem with rest_auth. Don't support django 4.0+
 # *For django.conf.urls use

@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
+from rest_framework.pagination import PageNumberPagination
 
 from .models import Post
 from .forms import PostForm, PostDeleteForm
@@ -129,7 +130,12 @@ def delete(request, pk=None):
 @permission_required([IsAuthenticated])
 def post_api_view(request):
     if request.method == 'GET':
-        serializer = PostSerializer(Post.objects.all(), many=True)
+        paginator = PageNumberPagination()
+        paginator.page_size = 10
+        post_objects = Post.objects.all()
+        result = paginator.paginate_queryset(post_objects, request)
+        serializer = PostSerializer(result, many=True)
+        # serializer = PostSerializer(Post.objects.all(), many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         serializer = PostSerializer(data=request.data)
