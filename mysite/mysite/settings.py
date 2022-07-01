@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'blog.apps.BlogConfig',  # added
+    'blog.apps.BlogConfig',  # приложение
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',  # блочило админку (чекнуть в инете)
-    'debug_toolbar',
+
+    # 3rd party
+    'debug_toolbar',  # должно быть после 'django.contrib.staticfiles'
     'rest_framework',
     'rest_framework.authtoken',
     'allauth',
